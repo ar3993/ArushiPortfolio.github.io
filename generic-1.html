@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Stellar by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Gas Power Generation Forecasting Using Time Series Analysis</h1>
+						<p>Data Analysis Portfolio Project</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<span class="image main"><img src="images/timeseries-header.png" alt="" width="300" height="850" /></span>
+								<h2>Context</h2>
+								<p>The inspiration for this project came from my research proposal to Natural England for the production of a Risk Register in the State of Natural Capital Report. The report identifies gas power generation as a significant source of NO2 and PM emissions in the UK.
+									Although the share of renewables is increasing in the energy mix, gas is still the most secure source of energy and will be so in the foreseeable future. To restrict air pollution emissions coming from power generation accurate forecasting of gas power production is very important to ensure that gas power plants are only used when necessary which can help to reduce greenhouse gas emissions, improve grid reliability, and reduce costs. </p>		 	                            
+								<p> In this project, two methods for time series forecasting will be deployed.</p>	
+									<table border="1">
+										<tr>
+											<th>#</th>
+											<th>Model	</th>
+											<th>Description</th>
+											<th>Forecast</th>
+										</tr>
+										<tr>
+											<td>1</td>
+											<td> XGBoost</td>
+											<td> A popular machine learning algorithm which learns complex patterns and interactions in the data while maintaining good generalization performance. It combines multiple weak models to create a strong and accurate predictive model which makes it efficient in time series forecasting.</td>
+										    <td> XGBoost is used to forecast a period of two weeks of hourly gas production.</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>LSTM</td>
+											<td>A type of recurrent neural network (RNN) that is designed to make predictions on a series of data. They can capture long-term dependencies in the input sequence and make predictions based on the learned patterns.</td>
+										    <td>LSTM has been used to forecast a one-day period of hourly gas production.</td>
+										</tr>
+									</table>
+									
+									</body>
+									</html>
+								<h2>Data Extraction & Transformation (Excel)</h2>
+								<p> The dataset used here is from The Modo Energy Platform containing 'Energy Generation by Fuel type'
+								<ul>
+                                    <li>It was the half-hourly data collected for 1 year, from the 24th of June 2022 to the 25th of June 2023.</li>
+									<li>These were extracted in the CSV format, in sets of two week time period(due to a download limit). </li>
+									<li>This data was cleaned in excel by firstly, removing unnecessary columns aside from CCGT and OCGT data, summing both the CCGT and OCGT column for arriving at the total gas generation, and secondly, removing half-hourly time stamps, retaining only hourly time stamps and renaming the columns for the purpose simplifying this analysis.</li>
+								</ul>	
+                                </p>
+									
+								<p>Below are the raw and transformed excel data.</p>	
+									
+								<p>Raw exctracted data:</p>
+								
+								<span class="image"><img src="images/Before.png" alt="" width="990" height="450" /></span>
+                                <p></p>
+								<p>Cleaned data:</p>
+                                <p></p>
+								<span class="image"><img src="images/Screenshot 2023-08-26 130109.png" alt="" width="350" height="570"/></span>
+                                <p></p>
+								<h2>Data Pre-Processing (Python)</h2>
+								<p>After loading the data into Python, the data was pre processed for the analysis by converting the timestamp column to datetime format, as well as setting the column as index.</p>
+								<p></p>
+							
+								<span class="image"><img src="images/timestamp  (1).png" alt="" /></span>
+								<span class="image"><img src="images/timestamp  (2).png" alt="" /></span>
+								<p></p>
+								<h2>Feature Engineering</h2>
+								<p>Feature engineering in time series data requires capturing temporal patterns and dependancies that can affect the target variable.
+								<p>Here we will create the features like date, hour, day of week, weekday, quarter, month, year, day of year, week of year and season which can explain the trends of gas power generation data.
+								</p>
+								<span class="image"><img src="images/Feature_engineering.png" alt="" /></span>
+								<p> We can visualise some interesting relationships between gas energy generation across different temporal patterns in our dataset of June 2022 - June 2023 as follows: 
+								</p>
+								<span class="image"><img src="images/Feature visualisation.png" alt="" /></span>
+								<span class="image"><img src="images/feature_month.png" alt="" width="650" height="500"/></span>
+								<span class="image"><img src="images/feature-week.png" alt="" width="650" height="400"/></span>
+								<p></p>
+								<p> <b>Feature Importance</b></p>
+								<p>	Features play a significant role in predicting or explaining the variations in gas power generation. In our data we can see the following features as the most important:
+								</p>
+								<span class="image"><img src="images/Feature-imp.png" alt="" width="850" height="550"/></span>
+                                <p> </p>
+								<ul>
+									<li> <b>Day of Year: </b>The high feature importance of this variable suggests that the gas power generation shoots up significantly on certain days in the year. Since Gas power generation often plays a role in balancing the grid, this feature reflects issues like the fluctuating supply of renewables, weather conditions, gas pricing and maintenance scheduling.</li>
+                                    <li> <b>Hour:</b> The feature importance of hour suggests that the gas power generation varies significantly throughout the day. In UK, on average, the highest gas power generation occurs in the evening between 6 to 8 PM while the lowest occurs early in the morning, around 4 am.</li>
+									<li> <b>Day of the Week:</b> The feature importance of the day of week shows that power generation from gas is higher on weekdays than on weekends. For UK, on average more power is generated from gas on a Thursday on given week than any other day. While, power generated from gas on Sunday is significantly lower than any other day of the week.</li>
+                                </ul>
+								<h2>Running the regression using XGBoost</h2>
+                                <p> For the task of time series forecasting of power generated by Gas for the period of 6th June 23' to 24th June 23' from the training dataset of hourly energy generated by gas from the period of 24th Jun 22' to 6th Jun 23', XGBoost is used with a learning rate of 0.05 (which was found to be the most optimal) and a maximum depth of 3.</p>
+                                <span class="image"><img src="images/xgboost-reg.png" alt="" /></span>
+								<p></p>
+								<p><b>Forecasting on the dataset</b></p>
+								<span class="image"><img src="images/xgboost-forecast.png" alt="" /></span>
+								<p></p>
+                                <p>Calculating the RMSE to the note accuracy of the model </p>
+                                <span class="image"><img src="images/xgboost-rmse.png" alt="" /></span>
+                                <p></p>
+								<h2>Running the regression using LSTM</h2>
+                                <p> For the task of time series forecasting of power generated by Gas for the period of 25th June 23' from the training dataset of hourly energy generated by gas from the period of 24th Jun 22' to 24th Jun 23', LSTM is used with number of inputs as 24, number of features as 1. We define a Sequential model with a 'relu' activation function and run it over 15 epochs (which was found to be the most optimal).</p>
+                                <span class="image"><img src="images/LSTM-model.png" alt="" /></span>
+								<p></p>
+								<p><b>Predicting the values for 25th June</b></p>
+								<span class="image"><img src="images/lstm-predictions.png" alt="" /></span>
+								<p></p>
+                                <p>Calculating the RMSE to the note accuracy of the model </p>
+                                <span class="image"><img src="images/lstm-rmse.png" alt="" /></span>
+                                <p></p>
+                                <h2>Project Conclusion</h2>
+								<ul>
+									<li>Comparing the RMSEs, LSTM was a more accurate predictor for gas production for a one-day hourly period, but with this data for hourly frequency, it was unable to accurately predict a longer period of 2 weeks. (Neural networks are definitely a challenge for me, and I'm pretty sure there is some intricacy that I might've looked over).</li>
+                                    <li>XGBoost had a higher RMSE, but did a better job at predicting a longer period of forecast.</li>
+									<li>We understood that the three most important features affecting gas production are: 
+										<ul>
+											<li><b>Day of the yeek:</b> Since gas often plays a role in balancing the grid, this feature reflects issues like the fluctuating supply of renewables, weather conditions, gas pricing and maintenance scheduling.</li>
+										    <li><b>Hour:</b> In the UK, on average, the highest gas power generation occurs in the evening between 6 to 8 PM while the lowest occurs early in the morning, around 4 am.</li>
+										    <li><b>Day of week:</b> Power from gas generation is on average, higher on weekdays than on weekends with Thursday being the highest and Sunday being the lowest.</li>
+										</ul>	
+										</li>
+                                </ul>
+								<ul class="actions special">
+									<li><a href="https://github.com/ar3993/Gas-Power-TimeSeriesForecasting-XGBoost-LSTM" class="button">Click to view the github link</a></li>
+								</ul>
+							</section>
+
+					</div>
