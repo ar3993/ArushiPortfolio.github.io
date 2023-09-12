@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Stellar by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Sentiment Analysis of Automobile Companies in India</h1>
+						
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<span class="image main"><img src="images/sentiment-header.png" alt="" width="800" height="1100" /></span>
+								<h2>Context</h2>
+								<p> The aim for this project was to compare the sentiments of the three biggest automobile companies in India, namely Maruti Suzuki, Tata Motors and Mahindra & Mahindra. Natural language processing (NLP) methods were used to compare sentiments using twitter data related to the companies. A total of 9,458 tweets were collected from the period of July 26th, 2022, to August 5th, 2022 from Twitter API. This paper present sentiment analysis using six classifiers namely, , 
+									<table border="1">
+										<tr>
+                                            <th>#</th>
+											<th>Model	</th>
+											<th>Description</th>
+											<th>Accuracy</th>
+										</tr>
+										<tr>
+											<td>1</td>
+											<td> Support Vector Machines</td>
+											<td> It is a classification method under supervised learning that classifies the data into two categories by constructing an N-dimensional hyper plane with the maximum Euclidean distance between the closest training examples.</td>
+										    <td> 74% </td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td> Logistic Regression</td>
+											<td> This algorithm apprehends a vector of variables and evaluates the coefficients or weights for each input variable and then predicts the class of stated text as a word vector. It identifies the probability of occurrence of an event by fitting data into a logit function.</td>
+										    <td> 69%</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td> Random Forest</td>
+											<td> It is an ensemble learning classification method that operate by constructing a multitude of decision trees that can be used to estimate the class label by outputting the mode of the classes output by individual trees. The major advantages of the Random Forest algorithms include ease of understanding, non-parametric, fast and scalable, relevance of tokens in a class is automatically generated and they are robust to irrelevant text present in documents.</td>
+										    <td> 66%</td>
+										</tr>
+										<tr>
+											<td>4</td>
+											<td> KNN Classifier</td>
+											<td> K - Nearest Neighbour (KNN) is an instance based method for classifying objects based on learning data that are closest to the object. To make a prediction with KNN, we use the Euclidean distance to measure the distance between the query point and the case from the example sample.</td>
+										    <td> 61%</td>
+										</tr>
+										<tr>
+											<td>5</td>
+											<td> Naïve Bayes</td>
+											<td> It is one of the most widely used classification method used for sentiment analysis. It calculates the probability for every factor and selects the outcome with the highest probability.</td>
+										    <td> 61%</td>
+										</tr>
+										<tr>
+											<td>6</td>
+											<td> Decision Trees</td>
+											<td> Decision Tree are a hierarchical model for supervised learning where local regions are identified as a series of successive partitioning the feature space of the training set.</td>
+										    <td> 59%</td>
+										</tr>
+
+									</table>									<table border="1">
+			
+										</tr>
+										</tr>
+									</table>
+									
+									</body>
+									</html>
+								<h2>Data Collection</h2>
+								<p>  Data was collected through the Twitter Streaming API for the period starting from 26th July 2022 to 5th August 2022. The Python library called Tweepy2 was used to connect to the Twitter Streaming API for retrieving the tweets. Subset of the data was manually selected and annotated for training and evaluating the model. </p>
+									
+								<p>Below is the subset of the data </p>	
+									
+								
+								<span class="image"><img src="images/twitter-data-snap.png" alt="" width="900" height="250"/></span>
+                                
+								<p>Breakdown of twitter sentiments for each company</p>
+								<span class="image"><img src="images/company-sentiment.png" alt="" width="800" height="500"/></span>
+
+                                <p></p>
+                                <p></p>
+								<h2>Data Pre-processing</h2>
+								<p>Text in the tweets was cleaned and pre-processes using the following techniques:
+									<li> <b>Data Cleaning</b>: In this step anything other than textual data in alphabetical form was searched and removed. This included html entities, “@ users”. Tags (#), punctuation marks, numbers, and any other special characters. Words with a length of 1 were also removed.</li>
+									<li> <b>Case Folding</b>: To bring uniformity to the words in the tweets, all the letters were converted to lower case.</li>
+									<li> <b>Tokenization</b>: It is the process of cutting or breaking sentences into parts or words. The result of this deduction is called a token. Several tokenization models can be used, namely, unigram, bigram, trigram, and n-gram. The natural language toolkit (NLTK)3 was used in this analysis to tokenize the text.</li>
+									<li> <b>Stop Words Removal</b> It is also called filtering. Here, the stop words, which are words appearing in large numbers but have very less significance, are eliminated. The reason that stop words are removed in text mining tasks is because their usage is too general, so users can focus on words which are more significant.</li> 
+								<p>
+								</p>
+								<p> Word tokenisation process in Python</p>	
+									
+								
+								<span class="image"><img src="images/word-tokenisation.png" alt="" width="900" height="500"/></span>
+                                
+								</p>
+								<p></p>
+							
+								<h2>Sentence Normalisation and Feature Extraction</h2>
+								<p>Lexical normalization is used to adapt the data to the model.</p>
+								<ul>
+									<li> <b>Stemming</b>:  After the data was cleaned, it was further processed to be stemmed. Stemming is a procedure to reduce all words with the same stem or suffixes to a common form.</li>
+                                    <li> <b>Lemmatization</b>: It is a method which removes inflectional endings and returns the base or dictionary form of the word.</li>
+									<li> <b>Feature Extraction</b>: TF-IDF methods are applied to extract features from the text retrieved. Term Frequency (TF) computes the number of times a word appears in a document, divided by the total number of words in that document.</li>
+									<li> <b>SMOTE</b>: The Synthetic Minority Oversampling Technique (SMOTE) is a method of over sampling the minority class by creating synthetic minority class examples and under sampling the majority class. The SMOTE approach showed improvement in accuracy of the classifiers for a minority class.</li>
+								<p> The word cloud for the words after pre processing and stemming is given in the figure below for each automobile company.</p>
+								<span class="image"><img src="images/positive-wordcloud.png" alt="" width="650" height="550" /></span>	
+								<span class="image"><img src="images/negative-wordcloud.png" alt="" width="580" height="550" /></span>	
+								<p> The data was then split into training and testing dataset for evaluation of the classifiers. </p>
+								</ul>
+								</p>
+
+								<h2>Evaluation</h2>
+								After training the model we apply the following evaluation measures to check how the models are performing. Accordingly we use the following evaluation parameters to check the performance of the models respectively
+									<li>1) Accuracy Score</li>
+									<li>2) Precision</li>
+									<li>3) Recall </li>
+									<li>4) Confusion Matrix </li>
+								<p>The following code is used for evaluation of each of the machine learning models.</p>
+								<span class="image"><img src="images/evaluation-code.png" alt="" width="750" height="400" /></span>
+								<p>The following was the performance of the different classifiers in terms of precision, accuracy, and recall for each classifier.</p>
+								<span class="image"><img src="images/Evaluation-table.png" alt="" width="460" height="250" /></span>
+								<p>SMOTE was then applied to address the class imbalance of the dataset having a greater number of positive tweets and lesser number of negative and neutral tweets. The following was the performance of each classifier after SMOTE.</p>
+								<span class="image"><img src="images/Smote.png" alt="" width="460" height="310" /></span>
+								<p>The classifiers showed a remarkable increase in all metrics, except K Nearest Neighbour, after applying SMOTE. Naïve Bayes displayed a drastic increase in all metrics and resulted as the best performing classifier out of all the standalone classifiers.</p>
+								
+								<h2>Conclusion</h2>
+								For all three companies, a large majority of the tweets were positive.
+									<li>1) Tata Motors had the highest number of positive tweets.  Most of the positive sentiment for Tata Motors came from the increase in the share price of the stock of the company and increase in the electric vehicle and total sales. It also had the highest number of negative tweets attached which were related to the widening net loss for the first quarter and customer complaints regarding delivery and price.</li>
+									<li>2) Mahindra & Mahindra had the highest proportion of positive tweets. The positive sentiment came from a record number of 100,000 booking in 30 minutes for their newly launched Mahindra Scorpio. For Mahindra & Mahindra the major negative reaction was to the payment gateway glitch for booking the newly launched Mahindra Scorpio.</li>
+									<li>3) Maruti Suzuki had the highest number of neutral tweets. The positive sentiment coming for Maruti Suzuki was regarding the newly launched Maruti Brezza and Grand Vitara and the safety features of these cars. The negative tweets for Maruti Suzuki were related to chip shortage which limited the vehicle production and customer complaints regarding safety and delivery of vehicles.</li>
+									<li>4) Naïve Bayes classifier outperformed all the other classifiers in this study with the highest accuracy score of 92% and f1 score of 93%. Support vector machine Logistic Regression classifier was the second-best performing classifier with an accuracy of 91% and f1 score of 91%. Logistic Regression was the third best performing classifier with the accuracy and f1 score of 90% each. While Random Forest classifier came in fourth with an accuracy and f1 score of 83% each. The second worst performing classifier was Decision Trees with the accuracy and f1 score of 73% each. The worst performing classifier was the K Nearest Neighbour with an accuracy and f1 score of 41% and 35% respectively.</li>
+								<p></p>
+								<ul class="actions special">
+									<li><a href="https://github.com/ar3993/Sentiment-Analysis-of-Automobile-companies/tree/main" class="button">Click to view the github link</a></li>
+								</ul>
+							</section>
+
+					</div>
