@@ -1,4 +1,4 @@
-My Portfolio Website showcasing different projects I've done in Python, Tableau, SQL and Power BI.
+My Portfolio Website showcasing different projects I've done in Python, Tableau and Power BI.
 
 
 
