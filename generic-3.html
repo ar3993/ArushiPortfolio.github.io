@@ -30,8 +30,8 @@
 							<section id="content" class="main">
 								<span class="image main"><img src="images/BrentOilForecastCollage.png" alt="" width="300" height="850" /></span>
 								<h2>Context</h2>
-								<p>The Risk Register in the State of Natural Capital Report identifies gas power generation as a significant source of NO2 and PM emissions in the UK. Although the share of renewables is increasing in the energy mix, gas is still the most secure source of energy and will be so in the foreseeable future. 
-								    To restrict air pollution emissions coming from power generation accurate forecasting of gas power production is very important to ensure that gas power plants are only used when necessary which can help to reduce greenhouse gas emissions, improve grid reliability, and reduce costs. </p>		 	                            
+								<p> Investors, hedge funds, and trading firms rely on oil price forecasts to manage risk, optimize portfolios, and inform long/short strategies in commodities, energy, and related sectors. Accurate forecasts help governments and central banks make informed fiscal and monetary decisions.
+								    Industries such as aviation, shipping, chemicals, and manufacturing are highly sensitive to oil prices. Forecasting helps them plan procurement and stabilize operating costs.</p>		 	                            
 								<p> In this project, two methods for time series forecasting will be deployed.</p>	
 									<table border="1">
 										<tr>
@@ -44,24 +44,24 @@
 											<td>1</td>
 											<td> XGBoost</td>
 											<td> A popular machine learning algorithm which learns complex patterns and interactions in the data while maintaining good generalization performance. It combines multiple weak models to create a strong and accurate predictive model which makes it efficient in time series forecasting.</td>
-										    <td> XGBoost is used to forecast a period of two weeks of hourly gas production.</td>
+										    <td> XGBoost is used to forecast a period of 322 days of Brent Oil prices.</td>
 										</tr>
 										<tr>
 											<td>2</td>
-											<td>LSTM</td>
-											<td>A type of recurrent neural network (RNN) that is designed to make predictions on a series of data. They can capture long-term dependencies in the input sequence and make predictions based on the learned patterns.</td>
-										    <td>LSTM has been used to forecast a one-day period of hourly gas production.</td>
+											<td>Recursive Forecasting</td>
+											<td>Recursive forecasting in machine learning is a technique where the model uses its own previous predictions as inputs to forecast future values, especially for multi-step time series predictions.</td>
+										    <td>Recursive Forecasting has been used to forecast a 10 day period of daily Brent Oil prices.</td>
 										</tr>
 									</table>
 									
 									</body>
 									</html>
 								<h2>Data Extraction & Transformation (Excel)</h2>
-								<p> The dataset used here is from The Modo Energy Platform containing 'Energy Generation by Fuel type'
+								<p> The dataset used here is from the US Energy Information Administration (https://www.eia.gov/tools/)
 								<ul>
-                                    <li>It was the half-hourly data collected for 1 year, from the 24th of June 2022 to the 25th of June 2023.</li>
-									<li>These were extracted in the CSV format, in sets of two week time period(due to a download limit). </li>
-									<li>This data was cleaned in excel by firstly, removing unnecessary columns aside from CCGT and OCGT data, summing both the CCGT and OCGT column for arriving at the total gas generation, and secondly, removing half-hourly time stamps, retaining only hourly time stamps and renaming the columns for the purpose simplifying this analysis.</li>
+                                    <li>It was the daily prices data collected for 37 years, from May 1987 to the November of 2024.</li>
+									<li>These were extracted in the CSV format directly from the site.</li>
+									<li>This data was cleaned by removing unnecessary rows, converting the 'Date' column into a datetime format and renaming the columns for the purpose simplifying this analysis.</li>
 								</ul>	
                                 </p>
 									
@@ -73,7 +73,7 @@
                                 <p></p>
 								<p>Cleaned data:</p>
                                 <p></p>
-								<span class="image"><img src="images/Screenshot 2023-08-26 130109.png" alt="" width="350" height="570"/></span>
+								<span class="image"><img src="images/oil-price-dataframe" alt="" width="350" height="570"/></span>
                                 <p></p>
 								<h2>Data Pre-Processing (Python)</h2>
 								<p>After loading the data into Python, the data was pre processed for the analysis by converting the timestamp column to datetime format, as well as setting the column as index.</p>
