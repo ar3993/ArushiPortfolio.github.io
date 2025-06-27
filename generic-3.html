@@ -19,7 +19,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1>Gas Power Generation Forecasting Using Time Series Analysis</h1>
+						<h1>Brent Oil Price Forecasting Using XG Boost</h1>
 						<p>Data Analysis Portfolio Project</p>
 					</header>
 
@@ -69,22 +69,23 @@
 									
 								<p>Raw extracted data:</p>
 								
-								<span class="image"><img src="images/raw-data.png" alt="" width="990" height="450" /></span>
+								<span class="image"><img src="images/raw-data.png" alt="" width="500" height="450" /></span>
                                 <p></p>
 								<p>Cleaned data:</p>
                                 <p></p>
-								<span class="image"><img src="images/oil-price-dataframe" alt="" width="350" height="570"/></span>
+								<span class="image"><img src="images/oil-price-dataframe.png" alt="" width="350" height="570"/></span>
                                 <p></p>
 								<h2>Data Pre-Processing (Python)</h2>
 								<p>After loading the data into Python, the data was pre processed for the analysis by converting the timestamp column to datetime format, as well as setting the column as index.</p>
 								<p></p>
 							
-								<span class="image"><img src="images/timestamp  (1).png" alt="" /></span>
-								<span class="image"><img src="images/timestamp  (2).png" alt="" /></span>
+								<span class="image"><img src="images/Code-1.png" alt="" /></span>
+								<span class="image"><img src="images/code-2.png" alt="" /></span>
+								<span class="image"><img src="images/code-3.png" alt="" /></span>
 								<p></p>
 								<h2>Feature Engineering</h2>
 								<p>Feature engineering in time series data requires capturing temporal patterns and dependancies that can affect the target variable.
-								<p>Here we will create the features like date, hour, day of week, weekday, quarter, month, year, day of year, week of year and season which can explain the trends of gas power generation data.
+								<p>Here we will create the features like day, month, year, day of year, week of year, incorporating a 1-day lag to capture short-term momentum, and adding a 7-day rolling mean to smooth out weekly trends and highlight underlying patterns.
 								</p>
 								<span class="image"><img src="images/Feature_engineering.png" alt="" /></span>
 								<p> We can visualise some interesting relationships between gas energy generation across different temporal patterns in our dataset of June 2022 - June 2023 as follows: 
