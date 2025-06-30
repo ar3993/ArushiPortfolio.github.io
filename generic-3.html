@@ -69,11 +69,11 @@
 									
 								<p>Raw extracted data:</p>
 								
-								<span class="image"><img src="images/raw-data.png" alt="" width="500" height="450" /></span>
+								<span class="image"><img src="images/raw-data.png" alt="" width="500" height="400" /></span>
                                 <p></p>
 								<p>Cleaned data:</p>
                                 <p></p>
-								<span class="image"><img src="images/cleaned-data.png" alt="" width="750" height="500"/></span>
+								<span class="image"><img src="images/cleaned-data.png" alt="" width="450" height="300"/></span>
                                 <p></p>
 								<h2>Data Pre-Processing (Python)</h2>
 								<p>After loading the data into Python, the data was pre processed for the analysis by converting the timestamp column to datetime format, as well as setting the column as index.</p>
@@ -88,25 +88,25 @@
 								<p>Here we will create the features like day, month, year, day of year, week of year, incorporating a 1-day lag to capture short-term momentum, and adding a 7-day rolling mean to smooth out weekly trends and highlight underlying patterns.
 								</p>
 								<span class="image"><img src="images/features-brent-oil.png" alt="" /></span>
-								<p> We can visualise some interesting relationships between gas energy generation across different temporal patterns in our dataset of June 2022 - June 2023 as follows: 
+								<p> We can visualise some interesting relationships between Brent Oil price across different temporal patterns in our dataset as follows: 
 								</p>
 								<span class="image"><img src="images/brent-year.png" alt=""  width="1000" height="500"/></span>
 								<span class="image"><img src="images/7-day-rolling-mean.png" alt="" width="920" height="450"/></span>
 								<span class="image"><img src="images/brent-1daylag.png" alt="" width="920" height="450"/></span>
 								<p></p>
 								<p> <b>Feature Importance</b></p>
-								<p>	Features play a significant role in predicting or explaining the variations in gas power generation. In our data we can see the following features as the most important:
+								<p>	Features play a significant role in predicting or explaining the variations in Brent oil prices. In our data we can see the following features and trends as the most important:
 								</p>
 								<span class="image"><img src="images/feature-importance-code.png" alt="" /></span>
 								<span class="image"><img src="images/feature-importance.png" alt="" width="620" height="400"/></span>
                                 <p> </p>
 								<ul>
-									<li> <b>Day of Year: </b>The high feature importance of this variable suggests that the gas power generation shoots up significantly on certain days in the year. Since Gas power generation often plays a role in balancing the grid, this feature reflects issues like the fluctuating supply of renewables, weather conditions, gas pricing and maintenance scheduling.</li>
-                                    <li> <b>Hour:</b> The feature importance of hour suggests that the gas power generation varies significantly throughout the day. In UK, on average, the highest gas power generation occurs in the evening between 6 to 8 PM while the lowest occurs early in the morning, around 4 am.</li>
-									<li> <b>Day of the Week:</b> The feature importance of the day of week shows that power generation from gas is higher on weekdays than on weekends. For UK, on average more power is generated from gas on a Thursday on given week than any other day. While, power generated from gas on Sunday is significantly lower than any other day of the week.</li>
+									<li> <b>Lag 1: </b>The feature importance of this variable suggests that the Brent oil prices are very closely related to yesterday's prices. Oil prices may continue in the same direction for several days due to: Investor sentiment, News cycles, Supply chain or geopolitical events. Lag-1 captures this inertia.</li>
+                                                                        <li> <b>7 day rolling mean:</b> The 7-day mean filters out the noise that comes from sudden news events, speculative trading and shirt-term market overreaction. It presents a cleaner signal, which the model finds useful. The feature importance of a 7 day rolling means you’re forecasting in a system where short-term trends are stable, and momentum plays a big role.</li>
+									<li> <b> Year:</b> We can see that the Brent crude oil reached its all-time nominal high of $147.27 per barrel in July 2008. This historic peak was driven by a combination of - sky‑high global demand, especially from emerging economies in China and India, coupled with constrained supply, a weak U.S. dollar and intense speculative investment in oil futures markets, geopolitical disruptions (e.g., tensions in the Middle East, attacks, and pipeline threats) and broader fear of peak oil. While the Brent oil hit the lowest price during the March 2020 oil price crash, amid the COVID‑19 pandemic and a supply war </li>
                                 </ul>
 								<h2>Running the regression using XGBoost</h2>
-                                <p> For the task of time series forecasting of power generated by Gas for the period of 6th June 23' to 24th June 23' from the training dataset of hourly energy generated by gas from the period of 24th Jun 22' to 6th Jun 23', XGBoost is used with a learning rate of 0.05 (which was found to be the most optimal) and a maximum depth of 3.</p>
+                                <p> For the task of time series forecasting of Brent oil price for the period of 1st January 24' to 18th November 24' from the training dataset of daily Brent spot price from 1987 to 2023, XGBoost is used with a learning rate of 0.01 (which was found to be the most optimal for longer time series in order to avoid overfitting).</p>
                                 <span class="image"><img src="images/running-model.png" alt="" /></span>
 								<p></p>
 								<p><b>Forecasting on the dataset</b></p>
@@ -131,13 +131,13 @@
 Recursive forecasting (feeding back predictions) also causes error accumulation. We can use direct multi-step models - training separate models to predict t+1, t+2, ..., t+10 or use multi-output regressors (e.g. MultiOutputRegressor(XGBRegressor()))</li>
 									<li>We understood that the three most important features affecting gas production are: 
 										<ul>
-										    <li><b>1 Day Lag:</b> Brent oil prices often exhibit strong autocorrelation — meaning today's price is highly related to yesterday's. The 1 day lag feature captures this short term inertia.</li>
+										    <li><b>1 Day Lag:</b> Brent oil prices often exhibit strong autocorrelation — meaning today's price is highly related to yesterday's. The 1 day lag feature captures this short term inertia. In economic or commodity time series, yesterday’s price is often the strongest predictor of today’s price.</li>
 										    <li><b>7 day rolling mean:</b> The 7-day rolling mean smooths out short-term fluctuations and reflects the underlying trend. A 7-day window implicitly captures weekly seasonality (e.g., changes in trading behavior or economic data releases). It helps the model see the broader context around recent price changes.</li>
 										</ul>	
 										</li>
                                 </ul>
 								<ul class="actions special">
-									<li><a href="https://www.kaggle.com/code/arushirawat/brent-oil-price-forecasting" class="button">Click to view the github link</a></li>
+									<li><a href="https://www.kaggle.com/code/arushirawat/brent-oil-price-forecasting" class="button">Click to view the project</a></li>
 								</ul>
 							</section>
 
