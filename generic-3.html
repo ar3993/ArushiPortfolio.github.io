@@ -73,7 +73,7 @@
                                 <p></p>
 								<p>Cleaned data:</p>
                                 <p></p>
-								<span class="image"><img src="images/cleaned-data.png" alt="" width="450" height="300"/></span>
+								<span class="image"><img src="images/cleaned-data.png" alt="" width="350" height="300"/></span>
                                 <p></p>
 								<h2>Data Pre-Processing (Python)</h2>
 								<p>After loading the data into Python, the data was pre processed for the analysis by converting the timestamp column to datetime format, as well as setting the column as index.</p>
@@ -121,14 +121,15 @@
                                 <span class="image"><img src="images/recrusive-1.png" alt="" /></span>
 				<span class="image"><img src="images/recursive-2.png" alt="" /></span>
 								<p><b>Predicting the values for the 10 days</b></p>
-								<span class="image"><img src="images/recursive-output.png" alt="" width="900" height="600"/></span>
+								<span class="image"><img src="images/recursive-output.png" alt="" width="950" height="600"/></span>
 								<p></p>
-								<span class="image"><img src="images/Actual-predicted.png" alt="" width="900" height="600"/></span>
-                                <span class="image"><img src="images/combined-dataset.png" alt="" width="870" height="350"/></span>
+								<p>Comparing with the actual spot prices on these dates </p>
+								<span class="image"><img src="images/Actual-predicted.png" alt="" width="1000" height="500"/></span>
+                                <span class="image"><img src="images/combined-dataset.png" alt="" width="600" height="300"/></span>
 				<span class="image"><img src="images/errors.png" alt="" /></span>
-				<li>The MAPE - Mean Absolute Percentage Error is 0.6% - The average percentage error between predicted and actual prices. Anything below 5% is typically considered good, here it is at 0.60%, which is very strong performance.
-The MAE - average absolute difference between predicted and actual Brent oil price. On average, the forecast is USD 0.45 off per day from the actual price. Since Brent oil prices range from USD 20 to USD 120, an error of $0.45 is relatively small, especially for short-term forecasting.
-RMSE - Similar to MAE but penalizes larger errors more due to squaring. The typical forecasting error here is $0.72, slightly higher than the MAE due to penalization of outliers.</li>
+				<p>The MAPE - Mean Absolute Percentage Error is 0.6% - The average percentage error between predicted and actual prices. Anything below 5% is typically considered good, here it is at 0.60%, which is very strong performance.</p>
+                                <p>The MAE - average absolute difference between predicted and actual Brent oil price. On average, the forecast is USD 0.45 off per day from the actual price. Since Brent oil prices range from USD 20 to USD 120, an error of $0.45 is relatively small, especially for short-term forecasting.</p>
+				<p>RMSE - Similar to MAE but penalizes larger errors more due to squaring. The typical forecasting error here is $0.72, slightly higher than the MAE due to penalization of outliers. </p>
                                 <p></p>
 				<span class="image"><img src="images/forecast-plot.png" alt="" width="900" height="600"/></span>
 				<li>Looking at the error patterns between the predicted and actual values, the model is flattening out the volatility but captures the general trend without too much deviation. Some strategies to improve could be adding a 3 day/ 7 day lag, Differencing: Create features like diff_1 = price - lag_1, oil related indicators like - Crude oil inventories (EIA), OPEC production quotas, USD Index (DXY), geopolitical news sentiment scores.</li>
