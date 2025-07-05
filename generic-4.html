@@ -30,27 +30,17 @@
 							<section id="content" class="main">
 								<span class="image main"><img src="images/BrentOilForecastCollage.png" alt="" width="300" height="1450" /></span>
 								<h2>Context</h2>
-								<p>Industries such as aviation, shipping, chemicals, and manufacturing are highly sensitive to oil prices. Forecasting helps them plan procurement and stabilize operating costs. Oil forecasts are also utilised by investors, hedge funds, and trading firms to manage risk, optimize portfolios, and inform long/short strategies in commodities, energy, and related sectors.
-								   Accurate forecasts help governments and central banks make informed fiscal and monetary decisions. Thus, this project will attempt to use machine learning methods to forecast Brent Oil, which serves as the primary benchmark for oil pricing worldwide. </p>		 	                            
-								<p> In this project, two methods for time series forecasting will be deployed.</p>	
+								<p>Exploratory Data Analysis (EDA) is a crucial step in understanding and interpreting large datasets, especially in the energy sector. </p>		 	                            
+								<p> For the dataset on U.S. energy generation by fuel type from 2001 to 2024, EDA helps uncover:</p>	
 									<table border="1">
 										<tr>
-											<th>#</th>
-											<th>Model	</th>
-											<th>Description</th>
-											<th>Forecast</th>
+											<td> Trends Over Time: Visualizing changes in fuel usage (e.g., decline of coal, rise of renewables) highlights how U.S. energy policy, technology, and demand have evolved.</td>
 										</tr>
 										<tr>
-											<td>1</td>
-											<td> XGBoost</td>
-											<td> A popular machine learning algorithm which learns complex patterns and interactions in the data while maintaining good generalization performance. It combines multiple weak models to create a strong and accurate predictive model which makes it efficient in time series forecasting.</td>
-										    <td> XGBoost is used to forecast a period of 322 days of Brent Oil prices.</td>
+											<td>Comparative Insights: EDA enables comparisons across fuel types, helping identify dominant sources (like natural gas) and emerging contributors (like solar and wind).</td>
 										</tr>
 										<tr>
-											<td>2</td>
-											<td>Recursive Forecasting</td>
-											<td>Recursive forecasting in machine learning is a technique where the model uses its own previous predictions as inputs to forecast future values, especially for multi-step time series predictions.</td>
-										    <td>Recursive Forecasting has been used to forecast a 10 day period of daily Brent Oil prices.</td>
+											<td>Correlation Analysis: Understanding relationships between variables (e.g., solar vs. total generation) supports better modeling and forecasting.</td>
 										</tr>
 									</table>
 									
@@ -59,7 +49,7 @@
 								<h2>Data Extraction & Transformation (Excel)</h2>
 								<p> The dataset used here is from the US Energy Information Administration (https://www.eia.gov/tools/)
 								<ul>
-                                    <li>Daily Brent oil prices data was collected for 37 years, from May 1987 to the November of 2024.</li>
+                                    <li>Annual energy generated from different fuel types has been captured across the years 2000-2024. The units are in Gigawatt-hours (GWh) </li>
 									<li>These were extracted in the CSV format directly from the site.</li>
 									<li>This data was cleaned by removing unnecessary rows and renaming the columns for the purpose simplifying this analysis.</li>
 								</ul>	
@@ -73,7 +63,7 @@
                                 <p></p>
 								<p>Cleaned data:</p>
                                 <p></p>
-								<span class="image"><img src="images/cleaned-data.png" alt="" width="220" height="300"/></span>
+								<span class="image"><img src="images/us_energy_df.png" alt="" width="220" height="300"/></span>
                                 <p></p>
 								<h2>Data Pre-Processing (Python)</h2>
 								<p>After loading the data into Python, the data was pre processed for the analysis by converting the timestamp column to datetime format, as well as setting the column as index.</p>
