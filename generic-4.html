@@ -59,11 +59,11 @@
 									
 								<p>Raw extracted data:</p>
 								
-								<span class="image"><img src="images/energy-data-raw.png" alt="" width="1100" height="550" /></span>
+								<span class="image"><img src="images/energy-data-raw.png" alt="" width="1100" height="500" /></span>
                                 <p></p>
 								<p>Cleaned data:</p>
                                 <p></p>
-								<span class="image"><img src="images/us_energy_df.png" alt="" width="1200" height="650"/></span>
+								<span class="image"><img src="images/us_energy_df.png" alt="" width="1200" height="600"/></span>
                                 <p></p>
 								<h2>Summary Statistics</h2>
 								<p>The describe() function in Python (using pandas) provides a quick statistical summary of numerical columns in a DataFrame. For each column, it outputs key metrics like count, mean, standard deviation, minimum, 25th percentile, median (50%), 75th percentile, and maximum.
@@ -74,16 +74,11 @@
 								<span class="image"><img src="images/ds-output.png" alt="" /></span>
 							
 								<p></p>
-								<h2>Feature Engineering</h2>
-								<p>Feature engineering in time series data requires capturing temporal patterns and dependancies that can affect the target variable.
-								<p>Here we will create the features like day, month, year, day of year, week of year, incorporating a 1-day lag to capture short-term momentum, and adding a 7-day rolling mean to smooth out weekly trends and highlight underlying patterns.
-								</p>
-								<span class="image"><img src="images/features-brent-oil.png" alt="" /></span>
-								<p> We can visualise some interesting relationships between Brent Oil price across different temporal patterns in our dataset as follows: 
-								</p>
-								<span class="image"><img src="images/brent-year.png" alt=""  width="1000" height="500"/></span>
-								<span class="image"><img src="images/7-day-rolling-mean.png" alt="" width="920" height="450"/></span>
-								<span class="image"><img src="images/brent-1daylag.png" alt="" width="920" height="450"/></span>
+								<h2>Visualising trends</h2>
+								<span class="image"><img src="images/avg-fuel-code.png" alt="" /></span>
+								<span class="image"><img src="images/avg-fuel-sort.png" alt="" /></span>
+								<span class="image"><img src="images/fuel-gen-line-chart-code.png" alt="" /></span>
+								<span class="image"><img src="images/fuel-gen-line-chart.png" alt="" /></span>
 								<p></p>
 								<p> <b>Feature Importance</b></p>
 								<p>	Features play a significant role in predicting or explaining the variations in Brent oil prices. In our data we can see the following features and trends as the most important:
