@@ -31,7 +31,7 @@
   							<span class="image main" style="display: block; margin-bottom: 10px;">
     						
   							</span>
-  							<h2 style="margin-top: 0;">Context</h2>
+  							<h1 style="margin-top: 0;">Context</h1>
 								<p>By linking work demand to rural population and irrigation access, this project explores structural factors influencing public employment reliance. </p>		 	                            
 								<p>This project is put forth to provide an in-depth data driven economic analysis on the key trends and insights coming out of the demand for the MGNREGA scheme in the rural population of Madhya Pradesh, India.</p>	
 								<p>Tools used in the assignment primarily consist of MS Excel and Python.</p>
@@ -41,7 +41,7 @@
 								<h2>Data Extraction & Transformation (Excel)</h2>
 								<p> The data used in the analysis is credited to the MGNREGA website, 2011 Population Census and Irrigation Census for the data for irrigation facilities.  </p>
 								<p>Data cleaning has been done to account for discrepancies between the change of districts within Madhya Pradesh between 2011 to 2023. The values for the districts of AGAR-MALWA and Niwari have been merged with the values of the districts Shajapur and Tikamgarh respectively. The district Narmadapuram has been changed to Hoshangabad to account for a renaming of the district.</p>
-                            
+                            					<span class="image"><img src="images/mp-df.png" alt="" /></span>
                                 <p></p>
 								<h2>Plotting the number of households that demanded work
 during each month for the entire state as well as the top 5 districts with the highest amount of
@@ -51,96 +51,29 @@ work demanded during the year.</h2>
 								<p></p>
 							
 								<span class="image"><img src="images/Screenshot 2025-07-07 004528.png" alt="" /></span>
-								<span class="image"><img src="images/ds-output.png" alt="" /></span>
+								<p>For clearer visualisation, I’ve plotted a dual axis chart below. This provides a compact view of the trends of demand for work across the year for the top 5 districts and the state.</p>
+								<span class="image"><img src="images/Screenshot 2025-07-07 004538.png" alt="" /></span>
+								<span class="image"><img src="images/Screenshot 2025-07-07 004549.png" alt="" /></span>
 							
-								<p></p>
-								<h2>Visualising trends</h2>
-								<span class="image"><img src="images/avg-fuel-code.png" alt="" /></span>
-								<span class="image"><img src="images/avg-fuel-sort.png" alt="" width="1300" height="650" /></span>
-								<span class="image"><img src="images/fuel-gen-line-chart-code.png" alt="" /></span>
-								<span class="image"><img src="images/fuel-gen-line-chart.png" alt="" width="1300" height="620" /></span>
-								<p></p>
-								<p> <b>Correlation Heatmaps</b></p>
-								<p> Correlation quickly reveals which fuel types rise or fall together (e.g., wind + gas) and which move in opposite directions (e.g., coal vs. solar). This helps analysts understand substitution vs. complementarity in the grid. A heat‑map offers an instant visual cue — a quicker glance where relationships are strongest or weakest without wading through tables of numbers.
-								</p>
-								<span class="image"><img src="images/correlation_matrix_code.png" alt="" /></span>
-								<span class="image"><img src="images/heatmap.png" alt="" /></span>
-								<p>Identifying the most and least correlated energy fuels </p>
-
-								<span class="image"><img src="images/correlation_sorted_code.png" alt="" /></span>
-								<span class="image"><img src="images/correlation_df_sorted.png" alt="" /></span>
-                                <p> </p>
-								<ul>
-									<li> Renewables Rise, Fossils Fall: Clear trend of negative correlation between fossil fuels and renewables (Coal–Wind: -0.9816), (Coal–Natural Gas: -0.9759) (Coal–Solar: ~-0.90) suggests a long-term shift in U.S. energy policy or infrastructure investment.</li>
-                                                                        <li> Complementarity Within Clean Energy sources: Strong positive correlations among renewables (Wind-Natural Gas: 0.9799) and (Geothermal-Natural Gas: 0.8649) imply coordinated growth and push for cleaner energy sources.</li>
-									<li> Solar's growing importance in the energy mix: A correlation of 0.7553 with 'All fuels' implies that solar's contribution to total energy is both substantial and growing consistently over the years. It’s not the dominant source, but its trend aligns with total growth. </li>
-									<p> Overall these trends are useful for forecasting future energy generation mix in the US.</p>
-                                </ul>
-								<p><b>Most and least volatile fuels</b></p>
-                                <p> The “most” and “least” volatile fuel statistics indicates which fuels swing wildly and which are steady. This lets planners blend assets to reduce overall grid stability, investment risk, and operational flexibility—key ingredients for an optimized, resilient energy mix. The coefficient of variation (CV) is a powerful metric for comparing relative variability across fuels—especially when their average generation levels differ drastically.</p>
-                                <span class="image"><img src="images/mos-least-volatile.png" alt="" /></span>
-				<p> The coefficent of variance for Hydro‑electric pumped storage being -19.91 is a special case. The fuel has a negative mean (net energy consumption) thus yields a negative CV. Pumped storage is an energy‑storage technology, not a net generator. Inference from the rest of the output is described in the following table. </p>
-			        <table border="1">
-										<tr>
- 									   <th style="width: 15%;">Category</th>
-    									   <th style="width: 35%;">Fuels</th> <!-- Slightly more width -->
-    								           <th style="width: 55%;">Description</th> <!-- Slightly less width -->
-</tr>
-<tr>
-										<tr>
-											<td>Most‑volatile generation</td>
-											<td> 
-											     <ul style="margin: 0; padding-left: 15px;">
-											     <li>All utility‑scale solar 145% </li>
-											     <li>Petroleum liquids 97% </li>
- 											     <li>Coal 33%</li>
-										             <li>Petroleum coke 41%</li>
-											</td>
-											     <ul style="margin: 0; padding-left: 35px;">
-										        <td> Solar’s high CV reflects its rapid capacity build‑out plus inherent day‑to‑day variability; wind shows similar behaviour. Petroleum liquids are used mainly for peaking or emergencies, so volumes spike irregularly. Requires flexible backup (gas turbines, storage) and robust forecasting.</td>
-										</tr>
-										<tr>
-											<td>Moderately volatile</td>
-											<td> <li>Natural gas 33%</li>
-											     <li>Petroleum liquids 97% </li>
- 											     <li>Wind 85%</li></td>
-										        <td> Shows gas’s growing but still variable role; coal is in structural decline with drop‑offs unevenly distributed.</td>
-										</tr>
-										<tr>
-											<td>Low‑volatility “steady” sources</td>
-											<td> <li>Biomass 9% </li>
-											     <li>Wood‑derived fuels 7% </li>
- 											     <li>Geothermal 4% </li>
-										             <li>Nuclear 1.8 % </li> 
-											</td>
-										        <td> Output stays close to long‑term mean. Nuclear is the steadiest baseload; geothermal and hydro provide predictable generation with seasonal patterns.</td>
-										</tr>
-									</table>
-								<p><b> Year‑over‑Year (YoY) growth % for each fuel </b></p>
-								<!-- YoY Growth formula with MathML -->
-<p> Year-over-Year (YoY) growth measures the percentage change in a value (e.g., electricity generated by a specific fuel) from one year to the same year in the previous period. It's calculated using the formula:
-  <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
-    <mtext>YoY&nbsp;Growth</mtext>
-    <mo>=</mo>
-    <mo>(</mo>
-    <mfrac>
-      <!-- Numerator: Value_current - Value_previous -->
-      <mrow>
-        <mtext>Value</mtext><mo>​</mo><msub><mrow></mrow><mrow><mtext>current&nbsp;year</mtext></mrow></msub>
-        <mo>&#x2212;</mo><!-- minus sign -->
-        <mtext>Value</mtext><mo>​</mo><msub><mrow></mrow><mrow><mtext>previous&nbsp;year</mtext></mrow></msub>
-      </mrow>
-      <!-- Denominator: Value_previous -->
-      <mrow>
-        <mtext>Value</mtext><mo>​</mo><msub><mrow></mrow><mrow><mtext>previous&nbsp;year</mtext></mrow></msub>
-      </mrow>
-    </mfrac>
-    <mo>)</mo>
-    <mo>&#x00D7;</mo><!-- multiplication symbol -->
-    <mn>100</mn>
-  </math>
+								<p>The following trends can be observed from the produced charts:
 </p>
-								<span class="image"><img src="images/yoy_growth_code.png" alt="" width="1270" height="650"/></span>
+						
+								<ul>
+									<li> <b>1) Top districts heavily influence overall state trends:</b>
+The peaks and troughs of the demand for work by the total population of Madhya Pradesh coincides heavily with 4 out of the 5 top-demanding districts for work (except Morena). This suggests that these few districts are major drivers of the overall trend. In statistical terms, they likely contribute disproportionately to total work demand, so their variations shift the whole curve.</li>
+                                                                        <li> <b>Common seasonal or structural patterns across districts:</b>
+The synchronized timing of demand (e.g., peak in May–June, dip in April and November) likely reflects seasonal agricultural cycles, climate, or policy-driven work schedules that affect many districts similarly. This suggests statewide homogeneity in how and when people seek work under MGNREGA (or a similar scheme).</li>
+									
+                                </ul>
+								<p>MGNREGA work demand is closely tied to agricultural off-season. High demand can be explained in May-June which is the time period Just before sowing or after harvest — people are free and need work. While low demand in August is due to peak farming periods (like monsoon sowing), when most are occupied. Extreme summer months (April–June) may see high demand due to lack of alternative employment and prep work for kharif season. While winter months (Dec–Jan) may see low demand due to weather conditions or festivals.</p>
+                                				<p>Fund release cycles also affect the work under MGNREGA. Sometimes MGNREGA funds are disbursed in certain quarters, leading to artificially high demand in those periods when work is made available.
+These top 5 districts could be large, rural, and demographically representative, so their seasonal labor patterns closely mirror the entire state’s. </p>
+                              					<p>The district of Morena doesn't match the state pattern and remained steady throughout the year, without huge peaks or troughs, which could signal different local economic dynamics (e.g., urbanization, alternate employment) or a unique implementation pattern of government schemes.</p>
+				
+										
+								<p><b> Number of people demanding MNREGA work as a proportion of the total rural population, by district and state </b></p>
+								<!-- YoY Growth formula with MathML -->
+						<span class="image"><img src="images/Screenshot 2025-07-07 004600.png" alt="" width="1270" height="650"/></span>
 								<p> </p>
 								<table border="1">
 										<tr>
