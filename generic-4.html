@@ -139,6 +139,29 @@
 										</tr>
 									</table>
 								<p><b> Year‑over‑Year (YoY) growth % for each fuel </b></p>
+								<!-- YoY Growth formula with MathML -->
+<p>
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+    <mtext>YoY&nbsp;Growth</mtext>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mfrac>
+      <!-- Numerator: Value_current - Value_previous -->
+      <mrow>
+        <mtext>Value</mtext><mo>​</mo><msub><mrow></mrow><mrow><mtext>current&nbsp;year</mtext></mrow></msub>
+        <mo>&#x2212;</mo><!-- minus sign -->
+        <mtext>Value</mtext><mo>​</mo><msub><mrow></mrow><mrow><mtext>previous&nbsp;year</mtext></mrow></msub>
+      </mrow>
+      <!-- Denominator: Value_previous -->
+      <mrow>
+        <mtext>Value</mtext><mo>​</mo><msub><mrow></mrow><mrow><mtext>previous&nbsp;year</mtext></mrow></msub>
+      </mrow>
+    </mfrac>
+    <mo>)</mo>
+    <mo>&#x00D7;</mo><!-- multiplication symbol -->
+    <mn>100</mn>
+  </math>
+</p>
 								<span class="image"><img src="images/yoy_growth_code.png" alt="" width="1270" height="650"/></span>
 								<p> </p>
                         
