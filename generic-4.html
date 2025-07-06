@@ -93,9 +93,10 @@
 								<span class="image"><img src="images/correlation_df_sorted.png" alt="" /></span>
                                 <p> </p>
 								<ul>
-									<li> <b>Lag 1: </b>The feature importance of this variable suggests that the Brent oil prices are very closely related to yesterday's prices. Oil prices may continue in the same direction for several days due to: Investor sentiment, News cycles, Supply chain or geopolitical events. Lag-1 captures this inertia.</li>
-                                                                        <li> <b>7 day rolling mean:</b> The 7-day mean filters out the noise that comes from sudden news events, speculative trading and shirt-term market overreaction. It presents a cleaner signal, which the model finds useful. The feature importance of a 7 day rolling means you’re forecasting in a system where short-term trends are stable, and momentum plays a big role.</li>
-									<li> <b> Year:</b> We can see that the Brent crude oil reached its all-time nominal high of $147.27 per barrel in July 2008. This historic peak was driven by a combination of - sky‑high global demand, especially from emerging economies in China and India, coupled with constrained supply, a weak U.S. dollar and intense speculative investment in oil futures markets, geopolitical disruptions (e.g., tensions in the Middle East, attacks, and pipeline threats) and broader fear of peak oil. While the Brent oil hit the lowest price during the March 2020 oil price crash, amid the COVID‑19 pandemic and a supply war </li>
+									<li> Renewables Rise, Fossils Fall: Clear trend of negative correlation between fossil fuels (coal, petroleum) and renewables (solar, wind) suggests a long-term shift in U.S. energy policy or infrastructure investment.</li>
+                                                                        <li> Complementarity Within Renewables: Strong positive correlations among solar types, biomass variants, and solar–wind imply coordinated growth.</li>
+									<li> Nuclear Is Stable but Shows Weak Trends: Nuclear has moderate correlations with other sources, showing its steady but isolated role. </li>
+									<p> Overall these trends are useful for forecasting future energy generation mix in the US.</p>
                                 </ul>
 								<p>Most and least volatile fuels</p>
                                 <p> For the task of time series forecasting of Brent oil price for the period of 1st January 24' to 18th November 24' from the training dataset of daily Brent spot price from 1987 to 2023, XGBoost is used with a learning rate of 0.01 (which was found to be the most optimal for longer time series in order to avoid overfitting).</p>
@@ -108,10 +109,14 @@
 								<ul>
 									<li>We understood that the two most important features affecting gas production are: 
 										<ul>
-										    <li><b>1 Day Lag:</b> Brent oil prices often exhibit strong autocorrelation — meaning today's price is highly related to yesterday's. The 1 day lag feature captures this short term inertia. In economic or commodity time series, yesterday’s price is often the strongest predictor of today’s price.</li>
+										    <li><b>Correlation: The correlation matrix revealed structural energy transitions in the U.S.:
+
+											From coal and petroleum towards natural gas, wind, and solar.
+
+											Growth in solar has been accompanied by declines in biomass and fossil use.</li>
 										    <li><b>7 day rolling mean:</b> The 7-day rolling mean smooths out short-term fluctuations and reflects the underlying trend. A 7-day window implicitly captures weekly seasonality (e.g., changes in trading behavior or economic data releases). It helps the model see the broader context around recent price changes.</li>
 										</ul>	
-									<li>Recursive forecasting based on the above two features has produced a relatively accurate forecast of future Brent Oil prices beyond the test dataset and can be used in analysis and decision making with confidence.
+									<li>Recursive forecasting based on the above two features has produced a relatively accurate forecast of future Brent Oil prices beyond the test dataset and can be used in analysis and decision making with confidence
 										</li>
                                 </ul>
 								<ul class="actions special">
