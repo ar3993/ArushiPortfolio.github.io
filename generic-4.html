@@ -101,7 +101,7 @@
 								<p><b>Most and least volatile fuels</b></p>
                                 <p> The “most” and “least” volatile fuel statistics indicates which fuels swing wildly and which are steady. This lets planners blend assets to reduce overall grid stability, investment risk, and operational flexibility—key ingredients for an optimized, resilient energy mix. The coefficient of variation (CV) is a powerful metric for comparing relative variability across fuels—especially when their average generation levels differ drastically.</p>
                                 <span class="image"><img src="images/mos-least-volatile.png" alt="" /></span>
-				<p> the coefficent of variance for Hydro‑electric pumped storage being -19.91 is a special case. The fuel has a negative mean (net energy consumption) thus yields a negative CV. Pumped storage is an energy‑storage technology, not a net generator. Inference from the rest of the output is described in the following table. </p>
+				<p> The coefficent of variance for Hydro‑electric pumped storage being -19.91 is a special case. The fuel has a negative mean (net energy consumption) thus yields a negative CV. Pumped storage is an energy‑storage technology, not a net generator. Inference from the rest of the output is described in the following table. </p>
 			        <table border="1">
 										<tr>
  									   <th style="width: 15%;">Category</th>
@@ -119,7 +119,7 @@
 										             <li>Petroleum coke 41%</li>
 											</td>
 											     <ul style="margin: 0; padding-left: 35px;">
-										        <td> Solar’s high CV reflects its rapid capacity build‑out plus inherent day‑to‑day variability; wind shows similar behaviour. Petroleum liquids are used mainly for peaking or emergencies, so volumes spike irregularly. • Requires flexible backup (gas turbines, storage) and robust forecasting.</td>
+										        <td> Solar’s high CV reflects its rapid capacity build‑out plus inherent day‑to‑day variability; wind shows similar behaviour. Petroleum liquids are used mainly for peaking or emergencies, so volumes spike irregularly. Requires flexible backup (gas turbines, storage) and robust forecasting.</td>
 										</tr>
 										<tr>
 											<td>Moderately volatile</td>
@@ -167,13 +167,14 @@
                         
                                 <h2>Project Conclusion</h2>
 								<ul>
-									<li> : 
+									<li> We can observe the following conclusions from our initial exploratory data analysis: 
 										<ul>
 										    <li><b>Correlation:</b> The correlation matrix revealed structural energy transitions in the US:
 
 											From coal and petroleum towards natural gas, wind, and solar.</li>
-										    <li>7 day rolling mean:</b> The 7-day rolling mean smooths out short-term fluctuations and reflects the underlying trend. A 7-day window implicitly captures weekly seasonality (e.g., changes in trading behavior or economic data releases). It helps the model see the broader context around recent price changes.</li>
-										</ul>	
+										    <li> Volatile Fuel sources:</b> The Coefficient of variance (CV) was used to understand fuel volatility to ensure appropriate backup capacity, storage and identify riskier fuels. Solar and Wind are highly variable both because of resource intermittency and rapid capacity expansion; they need complementary flexibility sources (gas, storage) and robust integration planning. While Coal and Gas exhibit similar CVs (~33 %) but for opposite reasons: gas is ramping up, coal winding down—masking very different structural trends. These CV insights help operators and policymakers balance the U.S. energy mix—pairing low‑volatility baseload with high‑volatility renewables and planning storage/flexibility investments accordingly.
+
+
 									<li>Recursive forecasting based on the above two features has produced a relatively accurate forecast of future Brent Oil prices beyond the test dataset and can be used in analysis and decision making with confidence
 										</li>
                                 </ul>
