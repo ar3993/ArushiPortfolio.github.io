@@ -83,7 +83,7 @@
 								<span class="image"><img src="images/fuel-gen-line-chart.png" alt="" width="1300" height="650" /></span>
 								<p></p>
 								<p> <b>Correlation Heatmaps</b></p>
-								<p>	Features play a significant role in predicting or explaining the variations in Brent oil prices. In our data we can see the following features and trends as the most important:
+								<p> Correlation quickly reveals which fuel types rise or fall together (e.g., wind + gas) and which move in opposite directions (e.g., coal vs. solar). This helps analysts understand substitution vs. complementarity in the grid. A heat‑map offers an instant visual cue — a quicker glance where relationships are strongest or weakest without wading through tables of numbers.
 								</p>
 								<span class="image"><img src="images/correlation_matrix_code.png" alt="" /></span>
 								<span class="image"><img src="images/heatmap.png" alt="" /></span>
@@ -93,9 +93,9 @@
 								<span class="image"><img src="images/correlation_df_sorted.png" alt="" /></span>
                                 <p> </p>
 								<ul>
-									<li> Renewables Rise, Fossils Fall: Clear trend of negative correlation between fossil fuels (coal, petroleum) and renewables (solar, wind) suggests a long-term shift in U.S. energy policy or infrastructure investment.</li>
-                                                                        <li> Complementarity Within Renewables: Strong positive correlations among solar types, biomass variants, and solar–wind imply coordinated growth.</li>
-									<li> Nuclear Is Stable but Shows Weak Trends: Nuclear has moderate correlations with other sources, showing its steady but isolated role. </li>
+									<li> Renewables Rise, Fossils Fall: Clear trend of negative correlation between fossil fuels and renewables (Coal–Wind: -0.9816), (Coal–Natural Gas: -0.9759) (Coal–Solar: ~-0.90) suggests a long-term shift in U.S. energy policy or infrastructure investment.</li>
+                                                                        <li> Complementarity Within Clean Energy sources: Strong positive correlations among renewables (Wind-Natural Gas: 0.9799) and (Geothermal-Natural Gas: 0.8649) imply coordinated growth and push for cleaner energy sources.</li>
+									<li> Solar's growing importance in the energy mix: A correlation of 0.7553 with 'All fuels' implies that solar's contribution to total energy is both substantial and growing consistently over the years. It’s not the dominant source, but its trend aligns with total growth. </li>
 									<p> Overall these trends are useful for forecasting future energy generation mix in the US.</p>
                                 </ul>
 								<p>Most and least volatile fuels</p>
@@ -107,14 +107,12 @@
                         
                                 <h2>Project Conclusion</h2>
 								<ul>
-									<li>We understood that the two most important features affecting gas production are: 
+									<li> : 
 										<ul>
-										    <li><b>Correlation: The correlation matrix revealed structural energy transitions in the U.S.:
+										    <li><b>Correlation:</b> The correlation matrix revealed structural energy transitions in the US:
 
-											From coal and petroleum towards natural gas, wind, and solar.
-
-											Growth in solar has been accompanied by declines in biomass and fossil use.</li>
-										    <li><b>7 day rolling mean:</b> The 7-day rolling mean smooths out short-term fluctuations and reflects the underlying trend. A 7-day window implicitly captures weekly seasonality (e.g., changes in trading behavior or economic data releases). It helps the model see the broader context around recent price changes.</li>
+											From coal and petroleum towards natural gas, wind, and solar.</li>
+										    <li>7 day rolling mean:</b> The 7-day rolling mean smooths out short-term fluctuations and reflects the underlying trend. A 7-day window implicitly captures weekly seasonality (e.g., changes in trading behavior or economic data releases). It helps the model see the broader context around recent price changes.</li>
 										</ul>	
 									<li>Recursive forecasting based on the above two features has produced a relatively accurate forecast of future Brent Oil prices beyond the test dataset and can be used in analysis and decision making with confidence
 										</li>
