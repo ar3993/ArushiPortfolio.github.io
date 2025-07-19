@@ -1,1 +1,153 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Stellar by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Brent Oil Price Forecasting Using Recursive Forecasting</h1>
+						<p>Data Analysis Portfolio Project</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<span class="image main"><img src="images/BrentOilForecastCollage.png" alt="" width="300" height="1450" /></span>
+								<h2>Introduction</h2>
+								<p> Brent is the leading global price benchmark for Atlantic basin crude oils and is used to set the price of two-thirds of the world's internationally traded crude oil supplies. It is one of the two main benchmark prices for purchases of oil worldwide, the other being West Texas Intermediate (WTI). Industries such as aviation, shipping, chemicals, and manufacturing are highly sensitive to oil prices. Forecasting Brent oil prices helps plan procurement and stabilize operating costs.
+								   Accurate forecasts help governments and central banks make informed fiscal and monetary decisions. </p>		 	                            
+								<p> In this project, we first use XG Boost model on the Brent oil prices time series and extract the most important time series features for predicting the prices on the test set. Then we use the selected features to forecast Brent oil prices beyond the test data. 1-day lag and 7-day rolling mean were the most important features. Recursive forecasting was then used to predict short term Brent oil prices - for a week. </p>
+								<p> For predicting prices over a longer term we need to address the mean-reversion that arises in the model as it is not clear a priori whether the oil price is stationary or not, according to Cristiana Manescu and Ine Van Robays (2014). Some of the most important long-term factors affecting oil prices are economic, supply and demand side changes, which need to be substituted in the model to create a robust long term forecast. In line with this, the U.S. Energy Information Administration’s (EIA) report “What Drives Crude Oil Prices?” highlights seven key drivers—including OPEC oil supply decisions, financial markets, and global demand—that should also be considered to improve the model’s long term structural understanding of oil price dynamics. Given the recent decisions of OPEC+ countries to increase supply along with a shift to renewables across major countries, there is a strong possibility of a downward pressure on long term Brent Oil prices. </p>	
+									<table border="1">
+										<tr>
+											<th>#</th>
+											<th>Model	</th>
+											<th>Description</th>
+											<th>Forecast</th>
+										</tr>
+										<tr>
+											<td>1</td>
+											<td> XGBoost</td>
+											<td> A popular machine learning algorithm which learns complex patterns and interactions in the data while maintaining good generalization performance. It combines multiple weak models to create a strong and accurate predictive model which makes it efficient in time series forecasting.</td>
+										    <td> XGBoost is used to forecast a period of 322 days of Brent Oil prices.</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>Recursive Forecasting</td>
+											<td>Recursive forecasting in machine learning is a technique where the model uses its own previous predictions as inputs to forecast future values, especially for multi-step time series predictions.</td>
+										    <td>Recursive Forecasting has been used to forecast a 10 day period of daily Brent Oil prices.</td>
+										</tr>
+									</table>
+									
+									</body>
+									</html>
+								<h2>Data Extraction & Transformation (Excel)</h2>
+								<p> The dataset used here is from the US Energy Information Administration (https://www.eia.gov/tools/)
+								<ul>
+                                    <li>Daily Brent oil prices data was collected for 37 years, from May 1987 to the November of 2024.</li>
+									<li>These were extracted in the CSV format directly from the site.</li>
+									<li>This data was cleaned by removing unnecessary rows and renaming the columns for the purpose simplifying this analysis.</li>
+								</ul>	
+                                </p>
+									
+								<p>Below are the raw and transformed excel data.</p>	
+									
+								<p>Raw extracted data:</p>
+								
+								<span class="image"><img src="images/raw-data.png" alt="" width="450" height="400" /></span>
+                                <p></p>
+								<p>Cleaned data:</p>
+                                <p></p>
+								<span class="image"><img src="images/cleaned-data.png" alt="" width="220" height="300"/></span>
+                                <p></p>
+								<h2>Data Pre-Processing (Python)</h2>
+								<p>After loading the data into Python, the data was pre processed for the analysis by converting the timestamp column to datetime format, as well as setting the column as index.</p>
+								<p></p>
+							
+								<span class="image"><img src="images/Code-1.png" alt="" /></span>
+								<span class="image"><img src="images/code-2.png" alt="" /></span>
+								<span class="image"><img src="images/code-3.png" alt="" /></span>
+								<p></p>
+								<h2>Feature Engineering</h2>
+								<p>Feature engineering in time series data requires capturing temporal patterns and dependancies that can affect the target variable.
+								<p>Here we will create the features like day, month, year, day of year, week of year, incorporating a 1-day lag to capture short-term momentum, and adding a 7-day rolling mean to smooth out weekly trends and highlight underlying patterns.
+								</p>
+								<span class="image"><img src="images/features-brent-oil.png" alt="" /></span>
+								<p> We can visualise some interesting relationships between Brent Oil price across different temporal patterns in our dataset as follows: 
+								</p>
+								<span class="image"><img src="images/brent-year.png" alt=""  width="1000" height="500"/></span>
+								<span class="image"><img src="images/7-day-rolling-mean.png" alt="" width="920" height="450"/></span>
+								<span class="image"><img src="images/brent-1daylag.png" alt="" width="920" height="450"/></span>
+								<p></p>
+								<p> <b>Feature Importance</b></p>
+								<p>	Features play a significant role in predicting or explaining the variations in Brent oil prices. In our data we can see the following features and trends as the most important:
+								</p>
+								<span class="image"><img src="images/feature-importance-code.png" alt="" /></span>
+								<span class="image"><img src="images/feature-importance.png" alt="" width="620" height="400"/></span>
+                                <p> </p>
+								<ul>
+									<li> <b>Lag 1: </b>The feature importance of this variable suggests that the Brent oil prices are very closely related to yesterday's prices. Oil prices may continue in the same direction for several days due to: Investor sentiment, News cycles, Supply chain or geopolitical events. Lag-1 captures this inertia.</li>
+                                                                        <li> <b>7 day rolling mean:</b> The 7-day mean filters out the noise that comes from sudden news events, speculative trading and shirt-term market overreaction. It presents a cleaner signal, which the model finds useful. The feature importance of a 7 day rolling means you’re forecasting in a system where short-term trends are stable, and momentum plays a big role.</li>
+									<li> <b> Year:</b> We can see that the Brent crude oil reached its all-time nominal high of $147.27 per barrel in July 2008. This historic peak was driven by a combination of - sky‑high global demand, especially from emerging economies in China and India, coupled with constrained supply, a weak U.S. dollar and intense speculative investment in oil futures markets, geopolitical disruptions (e.g., tensions in the Middle East, attacks, and pipeline threats) and broader fear of peak oil. While the Brent oil hit the lowest price during the March 2020 oil price crash, amid the COVID‑19 pandemic and a supply war </li>
+                                </ul>
+								<h2>Running the regression using XGBoost</h2>
+                                <p> For the task of time series forecasting of Brent oil price for the period of 1st January 24' to 18th November 24' from the training dataset of daily Brent spot price from 1987 to 2023, XGBoost is used with a learning rate of 0.01 (which was found to be the most optimal for longer time series in order to avoid overfitting).</p>
+                                <span class="image"><img src="images/running-model.png" alt="" /></span>
+								<p></p>
+								<p><b>Forecasting on the dataset</b></p>
+								<span class="image"><img src="images/prediction.png" alt="" width="1270" height="650"/></span>
+								<p></p>
+                                <p>Calculating the RMSE to the note accuracy of the model </p>
+                                <span class="image"><img src="images/rmse.png" alt="" /></span>
+				<p>1.46 error on price that typically fluctuates between 60 and 90 USD is reasonably well - roughly 5% relative RMSE, which is solid for financial time series. Suggesting the model is capturing the general pattern reasonably well, without overfitting. </p>
+                                <p></p>
+								<h2>Deploying the model to forecast future prices beyond the test set</h2>
+                                <p> For the task of forecasting Brent Oil prices beyond the dataset we'll use recursive forecasting methods. The prices will be predicted for a period of 25th June 23' from the training dataset of hourly energy generated by gas from the period of 19th Nov 24' to 28th Nov 24'. We will only use the two most important features, namely 1 day lag and the 7 day rolling mean to train the model and do recursive forecasting</p>
+                                <span class="image"><img src="images/recrusive-1.png" alt="" /></span>
+				<span class="image"><img src="images/recursive-2.png" alt="" /></span>
+								<p><b>Predicting the values for the 10 days</b></p>
+								<span class="image"><img src="images/recursive-output.png" alt="" width="950" height="600"/></span>
+								<p></p>
+								<p>Comparing with the actual spot prices on these dates </p>
+								<span class="image"><img src="images/Actual-predicted.png" alt="" width="1000" height="500"/></span>
+                                <span class="image"><img src="images/combined-dataset.png" alt="" /></span>
+				<span class="image"><img src="images/errors.png" alt="" /></span>
+				<li>The MAPE - Mean Absolute Percentage Error is 0.6% - The average percentage error between predicted and actual prices. Anything below 5% is typically considered good, here it is at 0.60%, which is very strong performance.</li>
+                                <li>The MAE - average absolute difference between predicted and actual Brent oil price. On average, the forecast is USD 0.45 off per day from the actual price. Since Brent oil prices range from USD 20 to USD 120, an error of $0.45 is relatively small, especially for short-term forecasting.</li>
+				<li>RMSE - Similar to MAE but penalizes larger errors more due to squaring. The typical forecasting error here is $0.72, slightly higher than the MAE due to penalization of outliers. </li>
+                                <p></p>
+				<span class="image"><img src="images/forecast-plot.png" alt="" width="900" height="600"/></span>
+				<p>Looking at the error patterns between the predicted and actual values, the model is flattening out the volatility but captures the general trend without too much deviation. Some strategies to improve could be adding a 3 day/ 7 day lag, Differencing: Create features like diff_1 = price - lag_1, oil related indicators like - Crude oil inventories (EIA), OPEC production quotas, USD Index (DXY), geopolitical news sentiment scores.</p>
+                                <p></p>
+                                <h2>Project Conclusion</h2>
+								<ul>
+									<li>We understood that the two most important features affecting gas production are: 
+										<ul>
+										    <li><b>1 Day Lag:</b> Brent oil prices often exhibit strong autocorrelation — meaning today's price is highly related to yesterday's. The 1 day lag feature captures this short term inertia. In economic or commodity time series, yesterday’s price is often the strongest predictor of today’s price.</li>
+										    <li><b>7 day rolling mean:</b> The 7-day rolling mean smooths out short-term fluctuations and reflects the underlying trend. A 7-day window implicitly captures weekly seasonality (e.g., changes in trading behavior or economic data releases). It helps the model see the broader context around recent price changes.</li>
+										</ul>	
+									<li>Recursive forecasting based on the above two features has produced a relatively accurate forecast of future Brent Oil prices beyond the test dataset and can be used in analysis and decision making with confidence.
+										</li>
+                                </ul>
+								<ul class="actions special">
+									<li><a href="https://www.kaggle.com/code/arushirawat/brent-oil-price-forecasting" class="button">Click to view the project</a></li>
+								</ul>
+							</section>
+
+					</div>
