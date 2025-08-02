@@ -127,12 +127,13 @@
                                 <h2>Project Conclusion</h2>
 								<ul>
 									<li>Comparing the RMSEs, LSTM was a more accurate predictor for gas production for a one-day hourly period, but with this data for hourly frequency, it was unable to accurately predict a longer period of 2 weeks.</li>
-                                    <li>XGBoost had a higher RMSE, but did a better job at predicting a longer period of forecast.</li>
+                                   					<li>XGBoost had a higher RMSE, but did a better job at predicting a longer period of forecast.</li>
 									<li>We understood that the three most important features affecting gas production are: 
 										<ul>
-											<li><b>Day of the yeek:</b> Since gas often plays a role in balancing the grid, this feature reflects issues like the fluctuating supply of renewables, weather conditions, gas pricing and maintenance scheduling.</li>
-										    <li><b>Hour:</b> In the UK, on average, the highest gas power generation occurs in the evening between 6 to 8 PM while the lowest occurs early in the morning, around 4 am.</li>
-										    <li><b>Day of week:</b> Power from gas generation is on average, higher on weekdays than on weekends with Thursday being the highest and Sunday being the lowest.</li>
+											<li><b>Lag 1 and 2 :</b> Gas power generation is highly autocorrelated — meaning yesterday’s and the day before’s values (Lag 1, Lag 2) are strong predictors of today’s value.
+This is especially true in stable operational systems like power plants, where sudden drastic changes are rare.</li>
+										    <li><b>3-day rolling mean:</b> A 3-day rolling mean smooths out short-term noise and captures recent operational trends or demand shifts.
+It acts like a short-term memory, helping the model understand whether generation is trending up, down, or stable.</li>
 										</ul>	
 										</li>
                                 </ul>
@@ -142,3 +143,4 @@
 							</section>
 
 					</div>
+
