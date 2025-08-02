@@ -122,12 +122,12 @@
 								<span class="image"><img src="images/lstm-predictions.png" alt="" /></span>
 								<p></p>
                                 <p>Calculating the RMSE to the note accuracy of the model </p>
-                                <span class="image"><img src="images/lstm-rmse.png" alt="" /></span>
+                                <span class="image"><img src="images/lstm-rmse.png" alt="" width="1050" height="300" /></span>
                                 <p></p>
                                 <h2>Project Conclusion</h2>
 								<ul>
-									<li>Comparing the RMSEs, LSTM was a more accurate predictor for gas production for a one-day hourly period, but with this data for hourly frequency, it was unable to accurately predict a longer period of 2 weeks.</li>
-                                   					<li>XGBoost had a higher RMSE, but did a better job at predicting a longer period of forecast.</li>
+									<li>Comparing the RMSEs, LSTM had a high Root Mean Squared Error of 1462.104 while XG Boost had a an RMSE of 92.60for a one-day hourly period at it was unable to accurately predict a longer period of 2 weeks.</li>
+                                   					<li>Thus XGBoost is a significantly better model for a longer term forecast given effective feature engineering..</li>
 									<li>We understood that the three most important features affecting gas production are: 
 										<ul>
 											<li><b>Lag 1 and 2 :</b> Gas power generation is highly autocorrelated — meaning yesterday’s and the day before’s values (Lag 1, Lag 2) are strong predictors of today’s value.
@@ -143,4 +143,5 @@ It acts like a short-term memory, helping the model understand whether generatio
 							</section>
 
 					</div>
+
 
