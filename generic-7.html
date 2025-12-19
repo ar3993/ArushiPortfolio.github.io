@@ -45,11 +45,19 @@ That is why summarising them is difficult: nuance, accuracy, logical continuity,
 The framework proposed in Evaluating Large Language Models by Irina Sigler and Yuan Xu offers a grounded way to think about how we measure an LLM’s real-world performance.
 
 								<h3>Qwen 2.5</h3>
+								<h4>Qwen 2.5 is a family of large language models (LLMs) developed by Alibaba’s Qwen team (Alibaba Cloud). It’s the successor to Qwen 2, designed to be more capable, more knowledgeable, and better at understanding and generating long or complex text across many languages and tasks.</h4>
 <li><b>Hugging Face API:</b> I first started with the Qwen 2.5 7B model on hugging face by plugging in the free HF API key - but, since the document I want to summarise is a 200 page pdf - the model calls hit the Hugging Face Inference API quota after summarising 34 out of the 240 chunks it created. So I went to the trusted ChatGPT to give me a workaround this.	</li>
 <li><b>Local GPU:</b> The full PDF was summarised locally using a quantized Qwen 2.5 3B model with chunking and a final merge step. After running the final consolidation cell, it failed with a CUDA OutOfMemoryError because the model was asked to attend over all chunk summaries at once, exceeding GPU memory limits. This was a fundamental transformer limitation that comes with running the model locally. The fix was to redesign the pipeline into a hierarchical summarisation approach, first merging small groups of summaries and then generating a final structured brief from those intermediate summaries. This resolved the memory issue while preserving accuracy and scalability.</li>
 <li><b>End Result:</b> The model showed strong capability in summarising long legal judgments by consistently extracting the Background & Facts, Core Legal Issues, Court’s Reasoning, and Final Verdict. It preserved the overall structure and logical flow of the judgment, indicating more than surface-level text understanding. While some nuanced legal reasoning was compressed, the essential arguments and outcomes remained intact. This makes the model effective for rapid legal comprehension and large-scale analytical use, with scope for further refinement and scalability.</li>									
 <p> You won’t get a meaningful single-prompt “upload 350k words and get back a perfect one-pass summary” for free on Colab — the engineering pattern (chunk + embed + summarize + reduce) is the proven, production approach. Use a long-context model where available to reduce engineering complexity, but if you want to stay fully on free/open infrastructure, quantized 7B models + hierarchical summarization will do the job well. </p>
-                                <h3>Mistral 7.3B </h3>
+                                <h3>Mistral 7B </h3>
+								<h4>Mistral 7B is an open-weight, general-purpose large language model developed by Mistral AI, designed to deliver strong reasoning and generation performance while remaining lightweight enough to run locally.
+
+At 7 billion parameters, it punches above its weight due to architectural choices such as grouped-query attention (GQA) for faster inference and sliding-window attention to handle longer contexts efficiently. These design decisions allow Mistral 7B to outperform many larger models from the same generation, especially on reasoning, summarization, and instruction-following tasks.</h4>
+
+It was released by Mistral AI with a focus on efficiency and reasoning, not just scale. The model uses a transformer architecture with several modern optimizations that let it outperform many older 13B models while being fast enough to run on a single GPU—or even locally with quantization.</h4>
+<li><b>Google Colab: </b> I tried running it on Google Colab but it required runtime to be set to GPU	</li>
+<li><b>Ollama: </b>Since I already have Ollama installed on my system, I'll just pull Mistral and run it locally (it is 4.4 GB).	</li>
 								<ul class="actions special">
 									<li><a href="https://www.kaggle.com/code/arushirawat/brent-oil-price-forecasting" class="button">Click to view the project</a></li>
 								</ul>
